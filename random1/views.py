@@ -53,8 +53,8 @@ def get_random_money(request):
     for i in range(parti_len):
         cost = math.ceil(total_cost * (random_index_list[i] / sum))
         percent = (random_index_list[i] / sum) * 100
-        total_list.append([cost, round(percent, 1)])
-        
+        total_list.append([cost, round(percent, 1)])  # [가격, 퍼센트] 
+
 
     final_result = {}  # map으로
     for i in range(parti_len):
