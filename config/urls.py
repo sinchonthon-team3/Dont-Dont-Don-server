@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('friend/', include('friends.urls')),
     path('random1/', include('random1.urls')),
+    path('weights/', include('weights.urls')),
 ]
