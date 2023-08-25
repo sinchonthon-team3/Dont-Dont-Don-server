@@ -46,9 +46,12 @@ def get_distribution_view(request):
             "name": req_user_datas[cnt].get("name"),
             "percentage": round(percentage*100, 1),
             "change_pay": user_pay,
-            "default_pay": math.ceil(total_price/member_count)
         }
         cnt += 1
         user.append(user_data)
+    res_data = {
+        'user': user,
+        'default_pay': math.ceil(total_price / member_count)
+    }
 
-    return Response(data=user, status=status.HTTP_200_OK)
+    return Response(data=res_data, status=status.HTTP_200_OK)
