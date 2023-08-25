@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'weights',
     'friends',
     'travel',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -70,6 +71,7 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', ## 이거 추가!! 위치 중요!!!
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,7 +79,42 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', ## 이거 추가!!
 ]
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+# # CORS 설정
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:8000",
+#     "https://client-orpin-five.vercel.app",
+#     "https://www.silvercampus.shop",
+#     "http://43.200.8.110",
+#     "https://43.200.8.110",
+
+
+# ]
+
+# # CSRF 설정
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:8000",
+#     "https://client-orpin-five.vercel.app",
+#     "https://www.silvercampus.shop",
+#     "http://43.200.8.110",
+#     "https://43.200.8.110",
+
+# ]
+
+
+
 
 ROOT_URLCONF = 'config.urls'
 
