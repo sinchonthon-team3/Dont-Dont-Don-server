@@ -49,13 +49,16 @@ def get_random_money(request):
         random_index_list.append(temp)
         sum += temp
 
-    cost_list = []
+    total_list = []
     for i in range(parti_len):
-        cost_list.append(math.ceil(total_cost * (random_index_list[i] / sum)))
+        cost = math.ceil(total_cost * (random_index_list[i] / sum))
+        percent = (random_index_list[i] / sum) * 100
+        total_list.append([cost, round(percent, 1)])
+        
 
     final_result = {}  # map으로
     for i in range(parti_len):
-        final_result[participants[i]] = cost_list[i]
+        final_result[participants[i]] = total_list[i]
 
     # 클라이언트에게 결과 보내주기
     return Response(final_result, status=status.HTTP_200_OK)
