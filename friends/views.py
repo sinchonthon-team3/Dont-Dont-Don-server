@@ -1,11 +1,23 @@
-from django.shortcuts import render
+from django.contrib.auth import get_user_model
 from rest_framework.decorators import api_view
 
+User = get_user_model()
 
 # Create your views here.
 
 
-@api_view
-def get_default_view(request):
-    if request.method == "GET":
-        pass
+@api_view("POST")
+def get_distribution_view(request):
+    req_data = request.data.copy()
+    data = req_data.pop("user")
+    data[0].get("")
+
+
+
+
+    # "user": {
+    #     "1": [1, 2],
+    #     "2": [2, 3],
+    #     "3": [1, 2],
+    # }
+
