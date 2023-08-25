@@ -6,11 +6,11 @@ User = get_user_model()
 # Create your views here.
 
 
-@api_view("POST")
+@api_view(["POST"])
 def get_distribution_view(request):
     req_data = request.data.copy()
     data = req_data.pop("user")
-    data[0].get("")
+    data.get("1")
 
 
 
