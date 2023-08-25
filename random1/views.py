@@ -57,6 +57,7 @@ def get_random_money(request):
 
 
     final_result = {}  # map으로
+    final_result["normal"] = math.ceil(total_cost / parti_len)
     for i in range(parti_len):
         final_result[participants[i]] = total_list[i]
 
