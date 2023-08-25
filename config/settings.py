@@ -79,6 +79,33 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# # CORS 설정
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:8000",
+#     "https://client-orpin-five.vercel.app",
+#     "https://www.silvercampus.shop",
+#     "http://43.200.8.110",
+#     "https://43.200.8.110",
+
+
+# ]
+
+# # CSRF 설정
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:8000",
+#     "https://client-orpin-five.vercel.app",
+#     "https://www.silvercampus.shop",
+#     "http://43.200.8.110",
+#     "https://43.200.8.110",
+
+# ]
+
+
+
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [

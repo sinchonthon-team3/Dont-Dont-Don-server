@@ -14,7 +14,6 @@ from rest_framework.response import Response
 from random import *
 import math
 
-
 User = get_user_model()
 
 # 회원가입
@@ -25,8 +24,6 @@ class UserRegisterView(generics.CreateAPIView):
 # 로그인
 class CustomTokenObtainPairView(TokenObtainPairView):
     pass  
-
-
 
 ###################### view 만들기 ######################
 
