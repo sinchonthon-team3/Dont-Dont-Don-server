@@ -21,29 +21,34 @@ def get_distribution_view(request):
     Weight(id=5, weight_name="늦참", is_travel=False, amount=-2).save()
     Weight(id=6, weight_name="노잼", is_travel=False, amount=1).save()
     req_data = request.data.copy()
-    datas = req_data.pop("user")
+    req_user_datas = req_data.pop("user")
     total_price = req_data.get("total_price")
-    member_count = len(datas)
+    member_count = len(req_user_datas)
     print(member_count)
     total_amount = 0
     user_amount_list = []
-    each_user_pay = []
-    for data in datas:
+    user = []
+    for data in req_user_datas:
         print(data)
         user_amount = 10
-        for weight_id in data:
+        weight_ids = data.pop("weight_ids")
+        for weight_id in weight_ids:
             weight = Weight.objects.get(id=weight_id)
             user_amount += weight.amount
         user_amount_list.append(user_amount)
         total_amount += user_amount
 
+    cnt = 0
     for user_amount in user_amount_list:
         percentage = user_amount/total_amount
         user_pay = math.ceil(total_price * percentage)
-        each_user_pay.append(user_pay)
+        user_data = {
+            "name": req_user_datas[cnt].get("name"),
+            "percentage": round(percentage*100, 1),
+            "change_pay": user_pay,
+            "default_pay": math.ceil(total_price/member_count)
+        }
+        cnt += 1
+        user.append(user_data)
 
-    res_data = {
-        "each_user_pay": each_user_pay
-    }
-
-    return Response(data=res_data, status=status.HTTP_200_OK)
+    return Response(data=user, status=status.HTTP_200_OK)
